@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇 By 柯柯</title>
+    <link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+
+<body>
+    <div id="root">
+        <div id="game"></div>
+        <div id="info">
+            <h1>贪吃蛇 - SNAKE</h1>
+            <h2><a href="http://www.likeke1997.com"> KEKE </a>创作</h2>
+            <fieldset>
+                <legend>信息</legend>
+                <fieldset>
+                    <legend>分数</legend><span id="score">0</span>
+                </fieldset>
+                <fieldset>
+                    <legend>时间槽</legend><progress id="progress" value="0" max="200"></progress>
+                    吃到食物时，时间槽越满，加的分越多，所以请尽快吃掉食物吧
+                </fieldset>
+            </fieldset>
+            <br />
+            <form id="setting">
+                <fieldset>
+                    <legend>设置</legend>
+                    <fieldset>
+                        <legend>难度</legend>
+                        <input type="radio" name="level" value="0">简单
+                        <input type="radio" name="level" value="1" checked>普通
+                        <input type="radio" name="level" value="2">困难
+                        <input type="radio" name="level" value="3">地狱
+                    </fieldset>
+                    <fieldset>
+                        <legend>尺寸</legend>
+                        <input type="radio" name="scale" value="0">24列 x 16行
+                        <input type="radio" name="scale" value="1" checked>48列 x 32行<br />
+                        <input type="radio" name="scale" value="2">72列 x 48行
+                        <input type="radio" name="scale" value="3">96列 x 64行
+                    </fieldset>
+                    <fieldset>
+                        <legend>边界</legend>
+                        <input type="radio" name="cross" value="0" checked>有
+                        <input type="radio" name="cross" value="1">无
+                    </fieldset>
+                </fieldset>
+                <br />
+                <button type="button" name="btn">开始游戏</button>
+            </form>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>

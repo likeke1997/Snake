@@ -1,0 +1,86 @@
+* {
+    font-size: 1rem;
+}
+
+#root {
+    position: relative;
+    width: 1280px;
+    height: 640px;
+    margin: auto auto;
+}
+
+#game {
+    position: absolute;
+    width: 960px;
+    height: 640px;
+    z-index: 10;
+    background: black;
+    border: 2px black solid;
+}
+
+#info {
+    position: absolute;
+    width: 320px;
+    height: 640px;
+    left: 960px;
+    z-index: 5;
+    background: black;
+    border: 2px black solid;
+}
+
+#progress {
+    width: 100%;
+}
+
+.snake {
+    position: absolute;
+}
+
+.head {
+    background: white;
+}
+
+.body {
+    background: white;
+}
+
+.food {
+    position: absolute;
+    background: white;
+    border: 2px yellow solid;
+    border-radius: 100%;
+}
+
+div {
+    background: black;
+    color: white;
+}
+
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+a {
+    color: yellow;
+}
+
+button {
+    position: absolute;
+    width: 80%;
+    height: 60px;
+    left: 10%;
+    margin-top: -10px;
+    font-size: 1.5rem;
+    transition: 0.25s;
+}
+
+button:hover {
+    font-size: 2rem;
+    font-weight: 800;
+}
