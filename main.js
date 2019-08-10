@@ -5,11 +5,12 @@ var node = {
     score: document.getElementById('score'),
     progress: document.getElementById('progress'),
     setting: document.getElementById('setting'),
+    control: document.getElementById('control')
 }
 
 function Scene() {}
 
-Scene.prototype.init = function() {
+Scene.prototype.init = function () {
     var levelIndex = node.setting.level.value;
     var scaleIndex = node.setting.scale.value;
     var crossIndex = node.setting.cross.value;
@@ -54,9 +55,13 @@ Scene.prototype.init = function() {
     this.updateTimer = setInterval(this.update.bind(this), 17);
     // 设置事件监听器
     document.addEventListener('keydown', this.changeDirection.bind(this), false);
+    buttonUp.addEventListener('click', this.changeDirectionUp.bind(this), false);
+    buttonDown.addEventListener('click', this.changeDirectionDown.bind(this), false);
+    buttonLeft.addEventListener('click', this.changeDirectionLeft.bind(this), false);
+    buttonRight.addEventListener('click', this.changeDirectionRight.bind(this), false);
 };
 
-Scene.prototype.update = function() {
+Scene.prototype.update = function () {
     // 每17ms更新一次，约为1/60s
     this.info.framecount += 1;
     // 判断蛇是否移动
@@ -75,10 +80,13 @@ Scene.prototype.update = function() {
     }
 };
 
-Scene.prototype.changeDirection = function(event) {
-    event.preventDefault();
+Scene.prototype.changeDirection = function (event, dir) {
     var direction = [0, 0];
-    switch (event.keyCode) {
+    if (event) {
+        event.preventDefault();
+        dir = event.keyCode;
+    }
+    switch (dir) {
         case 37: // left
             direction = [-1, 0];
             break;
@@ -98,7 +106,23 @@ Scene.prototype.changeDirection = function(event) {
     }
 }
 
-Scene.prototype.createSnake = function() {
+Scene.prototype.changeDirectionUp = function () {
+    this.changeDirection(undefined, 38);
+}
+
+Scene.prototype.changeDirectionDown = function () {
+    this.changeDirection(undefined, 40);
+}
+
+Scene.prototype.changeDirectionLeft = function () {
+    this.changeDirection(undefined, 37);
+}
+
+Scene.prototype.changeDirectionRight = function () {
+    this.changeDirection(undefined, 39);
+}
+
+Scene.prototype.createSnake = function () {
     // 创建蛇
     var parent = node.game;
     var snakes = document.getElementsByClassName('snake');
@@ -115,7 +139,7 @@ Scene.prototype.createSnake = function() {
     }
 }
 
-Scene.prototype.moveSnake = function() {
+Scene.prototype.moveSnake = function () {
     // 蛇移动
     var position = this.snake.position[0];
     var direction = this.snake.direction;
@@ -146,7 +170,7 @@ Scene.prototype.moveSnake = function() {
     }
 }
 
-Scene.prototype.refreshSnake = function() {
+Scene.prototype.refreshSnake = function () {
     // 蛇图像更新
     var snakes = document.getElementsByClassName('snake');
     var size = this.setting.size;
@@ -157,7 +181,7 @@ Scene.prototype.refreshSnake = function() {
     }
 }
 
-Scene.prototype.createFood = function() {
+Scene.prototype.createFood = function () {
     // 创建新食物
     var parent = node.game;
     var food = document.createElement('div');
@@ -168,7 +192,7 @@ Scene.prototype.createFood = function() {
     parent.appendChild(food);
 }
 
-Scene.prototype.eatFood = function() {
+Scene.prototype.eatFood = function () {
     // 加分
     var basic = 20 * this.setting.level;
     var progress = node.progress.value / 200;
@@ -182,7 +206,7 @@ Scene.prototype.eatFood = function() {
     this.createSnake();
 }
 
-Scene.prototype.refreshFood = function() {
+Scene.prototype.refreshFood = function () {
     var food = document.getElementsByClassName('food')[0];
     var size = this.setting.size;
     this.food.progress = 200;
@@ -194,7 +218,7 @@ Scene.prototype.refreshFood = function() {
     food.style.top = this.food.position[1] * size + 'px';
 }
 
-Scene.prototype.end = function() {
+Scene.prototype.end = function () {
     var parent = node.game;
     var childs = parent.childNodes;
     var length = childs.length;
@@ -207,7 +231,11 @@ Scene.prototype.end = function() {
 }
 
 var scene,
-    button = node.setting.btn;
+    button = node.setting['btn-start'],
+    buttonUp = node.control['btn-up'],
+    buttonDown = node.control['btn-down'],
+    buttonLeft = node.control['btn-left'],
+    buttonRight = node.control['btn-right'];
 button.addEventListener('click', startGame, false);
 
 function startGame() {
@@ -220,3 +248,22 @@ function endGame() {
     button.disabled = false;
     scene.end();
 }
+
+(function adaptiveScreen() {
+    var htmlDOM = document.documentElement;
+    var rootDOM = document.getElementById('root');
+    var htmlWidth = htmlDOM.clientWidth;
+    var htmlHeight = htmlDOM.clientHeight;
+    var scale = 1;
+    if (htmlWidth > htmlHeight) {
+        scale = (htmlWidth / htmlHeight >= (1280 / 640)) ? (htmlHeight / 640) : (htmlWidth / 1280);
+        rootDOM.style.left = Math.floor((htmlWidth - 1280) / 2) + 'px';
+        rootDOM.style.top = Math.floor((htmlHeight - 640) / 2) + 'px';
+        rootDOM.style.transform = `scale(${scale}, ${scale})`;
+    } else {
+        scale = (htmlWidth / htmlHeight >= (640 / 1280)) ? (htmlHeight / 1280) : (htmlWidth / 640);
+        rootDOM.style.left = Math.floor((htmlWidth - 1280) / 2) + 'px';
+        rootDOM.style.top = Math.floor((htmlHeight - 640) / 2) + 'px';
+        rootDOM.style.transform = `scale(${scale}, ${scale}) rotate(90deg)`;
+    }
+})();

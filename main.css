@@ -2,14 +2,24 @@
     font-size: 1rem;
 }
 
+html {
+    overflow: hidden;
+    background-color: rgb(243, 243, 243);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
 #root {
     position: relative;
     width: 1280px;
     height: 640px;
-    margin: auto auto;
 }
 
 #game {
+    box-sizing: border-box;
     position: absolute;
     width: 960px;
     height: 640px;
@@ -19,6 +29,7 @@
 }
 
 #info {
+    box-sizing: border-box;
     position: absolute;
     width: 320px;
     height: 640px;
@@ -83,4 +94,51 @@ button {
 button:hover {
     font-size: 2rem;
     font-weight: 800;
+}
+
+#control {
+    position: relative;
+}
+
+#control button {
+    position: absolute;
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    border: 1px solid gray;
+    padding: 0;
+    margin: 0;
+    z-index: 100;
+    background-color: rgb(243, 243, 243);
+    opacity: 0.33;
+}
+
+#control button:nth-child(1) {
+    top: 400px;
+    left: 800px;
+    border-bottom: 0;
+}
+
+#control button:nth-child(2) {
+    top: 528px;
+    left: 800px;
+    border-top: 0;
+}
+
+#control button:nth-child(3) {
+    top: 464px;
+    left: 736px;
+    border-right: 0;
+}
+
+#control button:nth-child(4) {
+    top: 464px;
+    left: 864px;
+    border-left: 0;
+}
+
+#control button:nth-child(5) {
+    top: 464px;
+    left: 800px;
+    border: 0;
 }
