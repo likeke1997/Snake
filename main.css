@@ -1,144 +1,144 @@
 * {
-    font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 html {
-    overflow: hidden;
-    background-color: rgb(243, 243, 243);
+  overflow: hidden;
+  background-color: rgb(243, 243, 243);
 }
 
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 #root {
-    position: relative;
-    width: 1280px;
-    height: 640px;
+  position: relative;
+  width: 1280px;
+  height: 640px;
 }
 
 #game {
-    box-sizing: border-box;
-    position: absolute;
-    width: 960px;
-    height: 640px;
-    z-index: 10;
-    background: black;
-    border: 2px black solid;
+  box-sizing: border-box;
+  position: absolute;
+  width: 960px;
+  height: 640px;
+  z-index: 10;
+  background: black;
+  border: 2px black solid;
 }
 
 #info {
-    box-sizing: border-box;
-    position: absolute;
-    width: 320px;
-    height: 640px;
-    left: 960px;
-    z-index: 5;
-    background: black;
-    border: 2px black solid;
+  box-sizing: border-box;
+  position: absolute;
+  width: 320px;
+  height: 640px;
+  left: 960px;
+  z-index: 5;
+  background: black;
+  border: 2px black solid;
 }
 
 #progress {
-    width: 100%;
+  width: 100%;
 }
 
 .snake {
-    position: absolute;
+  position: absolute;
 }
 
 .head {
-    background: white;
+  background: white;
 }
 
 .body {
-    background: white;
+  background: white;
 }
 
 .food {
-    position: absolute;
-    background: white;
-    border: 2px yellow solid;
-    border-radius: 100%;
+  position: absolute;
+  background: white;
+  border: 2px yellow solid;
+  border-radius: 100%;
 }
 
 div {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
 }
 
 h1 {
-    font-size: 1.5rem;
-    text-align: center;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 h2 {
-    font-size: 1rem;
-    text-align: center;
+  font-size: 1rem;
+  text-align: center;
 }
 
 a {
-    color: yellow;
+  color: yellow;
 }
 
 button {
-    position: absolute;
-    width: 80%;
-    height: 60px;
-    left: 10%;
-    margin-top: -10px;
-    font-size: 1.5rem;
-    transition: 0.25s;
+  position: absolute;
+  width: 80%;
+  height: 60px;
+  left: 10%;
+  margin-top: -10px;
+  font-size: 1.5rem;
+  transition: 0.25s;
 }
 
 button:hover {
-    font-size: 2rem;
-    font-weight: 800;
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 #control {
-    position: relative;
+  position: relative;
 }
 
 #control button {
-    position: absolute;
-    box-sizing: border-box;
-    width: 64px;
-    height: 64px;
-    border: 1px solid gray;
-    padding: 0;
-    margin: 0;
-    z-index: 100;
-    background-color: rgb(243, 243, 243);
-    opacity: 0.33;
+  position: absolute;
+  box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  border: 1px solid gray;
+  padding: 0;
+  margin: 0;
+  z-index: 100;
+  background-color: rgb(243, 243, 243);
+  opacity: 0.33;
 }
 
 #control button:nth-child(1) {
-    top: 400px;
-    left: 800px;
-    border-bottom: 0;
+  top: 400px;
+  left: 800px;
+  border-bottom: 0;
 }
 
 #control button:nth-child(2) {
-    top: 528px;
-    left: 800px;
-    border-top: 0;
+  top: 528px;
+  left: 800px;
+  border-top: 0;
 }
 
 #control button:nth-child(3) {
-    top: 464px;
-    left: 736px;
-    border-right: 0;
+  top: 464px;
+  left: 736px;
+  border-right: 0;
 }
 
 #control button:nth-child(4) {
-    top: 464px;
-    left: 864px;
-    border-left: 0;
+  top: 464px;
+  left: 864px;
+  border-left: 0;
 }
 
 #control button:nth-child(5) {
-    top: 464px;
-    left: 800px;
-    border: 0;
+  top: 464px;
+  left: 800px;
+  border: 0;
 }
